@@ -5,10 +5,10 @@ import './App.css';
 
 function App() {
   const books = [
-    {date: "1/1",item: "お年玉", amount: 10000},
-    {date: "1/3",item: "ケーキ", amount: -500},
-    {date: "2/1",item: "小遣い", amount: 3000},
-    {date: "2/5",item: "マンガ", amount: -600}
+    { date: "1/1", item: "お年玉", amount: 10000 },
+    { date: "1/3", item: "ケーキ", amount: -500 },
+    { date: "2/1", item: "小遣い", amount: 3000 },
+    { date: "2/5", item: "マンガ", amount: -600 }
   ];
   return (
     <div>
@@ -29,23 +29,14 @@ function App() {
 }
 
 const MoneyBookItem = (props) => {
-  const{date, item, amount} = props.book;
-  if(amount > 0){
-    return(
+  const { date, item, amount } = props.book;
+  if (amount > 0) {
+    return (
       <tr>
         <td>{date}</td>
         <td>{item}</td>
-        <td>{amount}</td>
-        <td></td>
-      </tr>
-    )
-  }else{
-    return(
-      <tr>
-        <td>{date}</td>
-        <td>{item}</td>
-        <td></td>
-        <td>{-amount}</td>
+        <td>{amount >= 0 ? amount : null}</td>
+        <td>{amount < 0 ? -amount : null}</td>
       </tr>
     )
   }

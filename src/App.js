@@ -18,10 +18,9 @@ function App() {
           <tr><th>日付</th><th>項目</th><th>入金</th><th>出金</th></tr>
         </thead>
         <tbody>
-          <MoneyBookItem book={books[0]} />
-          <MoneyBookItem book={books[1]} />
-          <MoneyBookItem book={books[2]} />
-          <MoneyBookItem book={books[3]} />
+          {
+            books.map((book) => <MoneyBookItem book={book} key={book.date + book.item} />)
+          }
         </tbody>
       </table>
     </div>
@@ -30,7 +29,6 @@ function App() {
 
 const MoneyBookItem = (props) => {
   const { date, item, amount } = props.book;
-  if (amount > 0) {
     return (
       <tr>
         <td>{date}</td>
@@ -39,7 +37,7 @@ const MoneyBookItem = (props) => {
         <td>{amount < 0 ? -amount : null}</td>
       </tr>
     )
-  }
+  
 }
 
 MoneyBookItem.propTypes = {
